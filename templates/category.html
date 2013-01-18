@@ -25,6 +25,8 @@
                     <a href="/{{ page.next_page_number }}/">Next Page</a>
                 {% endif %}
             {% else %}
-                <p>No posts matched</p>
+                <div class="post">
+                    <h3>No posts matched</h3>
+                </div>            
             {% endif %}
 {% include 'footer.html' %}

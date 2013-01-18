@@ -29,7 +29,7 @@ def getCategory(request, categorySlug, selected_page = 1):
             category_posts.append(post)
 
     # Add pagination
-    pages = Paginator(category_posts, 5)
+    pages = Paginator(category_posts, 1000)
 
     # Get the category
     category = Category.objects.filter(slug = categorySlug)[0]
