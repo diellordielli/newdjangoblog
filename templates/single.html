@@ -1,5 +1,4 @@
 {% include 'header.html' %}
-{# include 'category.html' #}
         {% load comments %}
             <div class="post">
                 {% for post in posts %}  
@@ -39,14 +38,16 @@
                                     {{ field }}
                                 {% else %}
                                     {% if field.name != "email" and field.name != "url" and field.name != "honeypot"%}
-                                        {% if field.errors %}{{ field.errors }}{% endif %}
+                                        {% if field.errors %}
+                                            {{ field.errors }}
+                                        {% endif %}
                                         </br>{{ field.label }}                                        
                                         </br>{{ field }}
                                     {% endif %}
                                 {% endif %}
                             {% endfor %}
-                            </br> <button type = submit>Senden</button>
-                       </form>
+                        </br> <button type = submit>Senden</button>
+                    </form>
                 {% endfor %}    
             </div>
             <br />

@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from blogengine.views import PostsFeed
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import ListView
 from blogengine.models import Category, Post
 from django.conf.urls.defaults import *
@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^(?P<page>\d+)?/?$', 'blogengine.views.home'),
 
     # Blog Posts
-    url(r'^(?P<postSlug>[-a-zA-Z0-9]+)/?$', 'blogengine.views.getPost'),
+    url(r'^\d{4}/\d{1,2}/(?P<postSlug>[-a-zA-Z0-9]+)/?$', 'blogengine.views.getPost'),
 
     # Categories
     url(r'^categories/?$', ListView.as_view(model = Category)),
@@ -37,6 +37,10 @@ urlpatterns = patterns('',
   
     # Archive
     (r"^month/(\d+)/(\d+)/$", "month"),
+
+    # RSS feeds
+    url(r'^feeds/posts/$', PostsFeed()),
+
 )
 
 urlpatterns += staticfiles_urlpatterns()
