@@ -1,0 +1,16 @@
+{% block sidebar %}
+    <style type="text/css">
+        #sidebar { float: right; border: 1px dotted #ccc; padding: 4px; }
+    </style>
+    <div id="sidebar">
+        Monthly Archive<br />
+        {% for month in months %}
+            {% ifchanged month.0 %}
+                {{ month.0 }} 
+                <br />             
+            {% endifchanged %}
+            <a href="{% url blogengine.views.month month.0 month.1 %}">{{ month.2 }}</a><br />
+        {% endfor %}
+    </div>
+{% endblock %}
+

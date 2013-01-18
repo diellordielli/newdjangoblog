@@ -1,0 +1,252 @@
+<html>
+    <head>
+        <title>BLOG</title>
+        <style type="text/css">
+            body {
+                background: #EFEFEF;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                color: #1C1C1C;
+            }
+
+            #search { 
+                position: fixed;
+                margin-top: -210px;
+                margin-left: -693px;
+                width: 100%;
+                padding: 5px 320px;
+                background: #BABABA;
+                z-index: 2;
+            }
+
+            #search form {
+                margin: 0px 0px 0px 550px;
+                z-index: 2;
+            }
+
+            img { border: none; }
+                a { color: #606062; text-decoration: none;
+            }
+
+            a:hover { 
+                text-decoration: underline; 
+                color : #606062;
+            }
+
+            .right {
+                position: absolute;
+                margin-top: 170px;
+                margin-left: 740px;
+                width: 170px;
+                border: 90px;
+                font-size: 18px;
+                padding: 20px 18px 0px 40px;
+                background: #ffffff;
+            }
+
+            .right ul {
+                margin-left: -15px;
+                padding: 0px 0px 50px 0px;
+            }
+
+            .right h2 {
+                margin-left: -15px;
+                height: 15px;
+                font-family: arial;
+                font-size: 20px;
+                font-weight: bold;
+                color: #3B3B39;
+                line-height: 20px;
+                padding: 2px 0px 0px 0px;
+            }
+                                   
+            .right a {                           
+                text-decoration: none
+            }
+                                  
+            .right h5{
+                display: inline;
+                font-family: Arial;
+                font-style: bold;
+                font-size: 22px;
+                font-weight: 55 0;
+                color: #47484A;
+            }
+
+            .right h6{
+                display: inline;
+                font-family: Arial;
+                font-size: 11px;
+                font-weight:300;
+                color: #47484A;
+            }
+
+            .right h8{
+                display: inline;
+                font-family: Arial;
+                font-size: 33px;
+                font-weight:300;
+                color: #47484A;
+            }
+
+            .right2 {
+                position: absolute;
+                margin-top: 370px;
+                margin-left: 740px;
+                width: 130px;
+                border: 90px;
+                font-size: 18px;
+                padding: 20px 58px 0px 40px;
+                background: #ffffff;
+            }
+
+            .right2 h2 {
+                margin-left: -7px;
+                height: 15px;
+                font-size: 20px;
+                font-weight: bold;
+                color: #3B3B39;
+                line-height: 20px;
+            }
+
+            .right2 a { 
+                text-decoration: none
+            }
+
+            .right2 ul {
+                margin-left: -7px;
+                font-family: Arial;
+                font-weight: bold;
+                font-size: 15px;
+                line-height: 1.6;
+                padding: 10px 0px 50px 0px;
+            }
+
+            .right2 h8{
+                font-family: Arial;
+                font-size: 14px;
+                font-weight:300;
+                color: #747371;
+            }
+
+            .right3 {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 740px;
+                width: 130px;
+                border: 90px;
+                font-size: 18px;
+                padding: 20px 58px 40px 40px;
+                background: #ffffff;
+            }
+
+            #main {
+                position: relative;
+                width: 700px;
+                height: 100%;
+                margin: 150px auto;
+            }
+
+            ul#pageList {
+                margin: 0px;
+                padding: 10px 0px 10px 0px;
+            }
+
+            ul#pageList li {
+                display: inline;
+                margin-right: 10px;
+                font-size: 15px;
+            }
+
+            .post, .page {
+                width: 600px;
+                padding: 40px 60px 40px 60px;
+                margin-bottom: 20px;
+                background-color: #ffffff;
+            }
+
+            #main h2{
+                position: absolute;
+                margin-top: -100px;
+                margin-left: 65px;
+                font-family: Arial;
+                font-style: italic;
+                font-size: 63px;
+                font-weight: bold;
+                letter-spacing: -3px;
+                color: #7A7977;                        
+            }
+                                    
+            .commentground{
+                position: absolute;
+                margin-left: -50px;                
+            }
+                                
+            .commentground2{
+                position: absolute;
+                margin-top: 85px;
+                margin-left: -50px;                
+            }
+                                    
+            .commentcounter{
+                position: absolute;
+                margin-top: 76px;
+                margin-left: -35px;
+                color: #FFFFFF;
+                z-index: 1;
+            }
+
+            .commentcounter2{
+                position: absolute;
+                margin-top: -8px;
+                margin-left: -35px;
+                color: #FFFFFF;
+                z-index: 1;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="main">
+            </br></br></br>
+            <h2><a href="/">BLOG</a></h2>
+            <ul id="pageList">
+
+        <div align="center">
+            <div id="search">
+                <form target="_blank" method="GET" action="http://www.google.ch/search">
+                <table>
+                    <tr>
+                        <td>
+                            <input TYPE="text" name="q" size="27" maxlength="100">
+                            <input TYPE="hidden" name="hl" value="de">
+                        </td>
+                    </tr>
+                </table>
+                </form>
+            </div>
+        </div>
+        <div class="right3">
+            <h3>Categories</h3>
+                <hr style="margin-left: -40px; width: 227px; border: none; border-bottom: 1px dotted grey" />
+                <ul>
+                    {% for category in categories %} 
+                        <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li> 
+                    {% endfor %}
+                </ul>
+
+        </div>
+
+            <div class="right">
+                <h3>Tags</h3>
+                    <hr style="margin-left: -40px; width: 227px; border: none; border-bottom: 1px dotted grey" />          
+            </div>
+
+        <div class="right2">
+            {% include 'list.html' %}
+        </div>
+
+    </ul>
+</body>
+</html>

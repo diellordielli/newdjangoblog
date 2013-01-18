@@ -1,0 +1,59 @@
+{% include 'header.html' %}
+{# include 'category.html' #}
+        {% load comments %}
+            <div class="post">
+                {% for post in posts %}  
+                    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+                        <div class="commentcounter">         
+                            {% get_comment_count for post as comment_count %}
+                            <h3>{{ comment_count }}</h3>
+                        </div>
+                        <div class="commentground2">
+                            <img src="{{ STATIC_URL }}img/Nachricht.jpg" />
+                        </div>
+                    <h3>Categories: 
+                        {% for category in post.categories.all %} 
+                            {{ category.title }} 
+                        {% endfor %}</h3>
+                    <h3>{{ post.pub_date }}</h3>
+                    {{ post.text }}
+                    <h3>{{ post.author.first_name }} {{ post.author.last_name }}</h3>
+                    </br>
+                    <hr style="margin-left: 0px; width: 600px; border: none; border-bottom: 1px dotted grey" />
+                    </br>
+                    <h3>Comments:</h3>
+                    {% get_comment_list for post as comments %}
+                        {% for comment in comments %}
+                           </br>        
+                           <li>{{ comment.comment }}</li>
+                        {% endfor %}
+                    </br>
+                    <hr style="margin-left: 0px; width: 600px; border: none; border-bottom: 1px dotted grey" />
+                    </br>        
+                    {% get_comment_form for post as form %}
+                    <form action="{% comment_form_target %}" method="post">
+                        <input type="hidden" name="next" value="{{ post.get_absolute_url }}" />
+                            {% csrf_token %}
+                            {% for field in form %}
+                                {% if field.is_hidden %}
+                                    {{ field }}
+                                {% else %}
+                                    {% if field.name != "email" and field.name != "url" and field.name != "honeypot"%}
+                                        {% if field.errors %}{{ field.errors }}{% endif %}
+                                        </br>{{ field.label }}                                        
+                                        </br>{{ field }}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            </br> <button type = submit>Senden</button>
+                       </form>
+                {% endfor %}    
+            </div>
+            <br />
+            {% if page.has_previous %}
+                <a href="/{{ page.previous_page_number }}/">Previous Page</a>
+            {% endif %}
+            {% if page.has_next %}
+                <a href="/{{ page.next_page_number }}/">Next Page</a>
+            {% endif %}
+{% include 'footer.html' %}
