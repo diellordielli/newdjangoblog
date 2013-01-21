@@ -4,11 +4,11 @@
         {% for post in object_list %}
             <div class="post">
                 <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-                    <div class="commentcounter2">                    
+                    <div class="commentcounter_postlist">                    
                         {% get_comment_count for post as comment_count %}
                         <h3>{{ comment_count }}</h3>
                     </div>
-                    <div class="commentground">
+                    <div class="commentground_postlist">
                         <img src="{{ STATIC_URL }}img/Nachricht.jpg" />
                     </div>
                 {{ post.text }}

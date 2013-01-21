@@ -41,7 +41,7 @@ def getCategory(request, categorySlug, selected_page = 1):
         returned_page = pages.page(pages.num_pages)
 
     # Display all the posts
-    return render_to_response('category.html', { 'posts': returned_page.object_list, 'page': returned_page, 'category': category})
+    return render(request, 'category.html', { 'posts': returned_page.object_list, 'page': returned_page, 'category': category})
 
 class PostsFeed(Feed):
     title = "My Django Blog posts"

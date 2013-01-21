@@ -3,11 +3,11 @@
             <div class="post">
                 {% for post in posts %}  
                     <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-                        <div class="commentcounter">         
+                        <div class="commentcounter_single">         
                             {% get_comment_count for post as comment_count %}
                             <h3>{{ comment_count }}</h3>
                         </div>
-                        <div class="commentground2">
+                        <div class="commentground_single">
                             <img src="{{ STATIC_URL }}img/Nachricht.jpg" />
                         </div>
                     <h3>Categories: 
@@ -46,9 +46,9 @@
                                     {% endif %}
                                 {% endif %}
                             {% endfor %}
-                        </br> <button type = submit>Senden</button>
+                        </br><button type = submit>Senden</button>
                     </form>
                 {% endfor %}    
             </div>
-            <br />
+            <br/>
 {% include 'footer.html' %}

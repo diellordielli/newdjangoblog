@@ -7,11 +7,11 @@
                 {% for post in posts %}
                     <div class="post">
                         <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-                            <div class="commentcounter3">                    
+                            <div class="commentcounter_category">                    
                                 {% get_comment_count for post as comment_count %}
                                 <h3>{{ comment_count }}</h3>
                             </div>
-                            <div class="commentground">
+                            <div class="commentground_category">
                                 <img src="{{ STATIC_URL }}img/Nachricht.jpg" />
                             </div>
                         {{ post.text }}
