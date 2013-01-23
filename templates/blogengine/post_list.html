@@ -1,22 +1,24 @@
 {% include 'header.html' %}
-{% load comments %}
-    {% if object_list %}
-        {% for post in object_list %}
+<div class="postlist">
+    {% load comments %}
+        {% if object_list %}
+            {% for post in object_list %}
+                <div class="post">
+                    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+                        <div class="commentcounter_postlist">                    
+                            {% get_comment_count for post as comment_count %}
+                            <h3>{{ comment_count }}</h3>
+                        </div>
+                        <div class="commentground_postlist">
+                            <img src="{{ STATIC_URL }}img/Nachricht.jpg" />
+                        </div>
+                    {{ post.text }}
+                </div>
+            {% endfor %}
+        {% else %}
             <div class="post">
-                <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-                    <div class="commentcounter_postlist">                    
-                        {% get_comment_count for post as comment_count %}
-                        <h3>{{ comment_count }}</h3>
-                    </div>
-                    <div class="commentground_postlist">
-                        <img src="{{ STATIC_URL }}img/Nachricht.jpg" />
-                    </div>
-                {{ post.text }}
+                <h3>No posts matched</h3>
             </div>
-        {% endfor %}
-    {% else %}
-        <div class="post">
-            <h3>No posts matched</h3>
-        </div>
-    {% endif %}
+        {% endif %}
+</div>
 {% include 'footer.html' %}
